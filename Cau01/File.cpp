@@ -78,7 +78,8 @@ int Mail::DanhSachMail()
 {
 	cout << "LIST Mail" << endl;
 	cout << "1.Gmail" << endl;
-	return 1;
+	cout << "2.Yahoo" << endl;
+	return 2;
 }
 
 string Mail::LuaChonMail(int n)
@@ -170,6 +171,31 @@ void AppUser::LuuUser()
 {
 	string FileName = this->toStringFileName();
 	Files::WriteFile(FileName, this->DanhSachMail());
+
+}
+
+void AppUser::TaiUser()
+{
+	cout << "nhap user name:";
+	cin >> this->UserName;
+	string FileName = this->toStringFileName();
+	list<string>feature;
+	list<string>DanhSachMail=Files::ReadFile(FileName);
+	for (list<string>::iterator i = DanhSachMail.begin();i != DanhSachMail.end();++i) {
+		feature = Files::split(*i, '|');
+		list<string>::iterator i0 = next(feature.begin(), 0);
+		list<string>::iterator i1 = next(feature.begin(), 1);
+		list<string>::iterator i2 = next(feature.begin(), 2);
+		Mail* mail;
+		mail = CreatMail::TaoMail(*i0);
+		if (mail->KiemTraMail(*i1, *i2) == true) {
+			mail->ganIDVaPass(*i1, *i2);
+			this->DanhSach.push_back(mail);
+		}
+		else {
+			cout << "ACCOUNT NOT EXIST !!!" << endl;
+		}
+	}
 }
 
 AppUser::~AppUser()
@@ -202,5 +228,28 @@ Mail* CreatMail::TaoMail(string MailName)
 	if (MailName == "Gmail") {
 		mail = new Gmail();
 	}
+	if (MailName == "Yahoo") {
+		mail = new Yahoo();
+	}
 	return mail;
+}
+
+Yahoo::Yahoo()
+{
+}
+
+Yahoo::Yahoo(string id, string pass):Mail(id,pass)
+{
+}
+
+string Yahoo::toStringMail()
+{
+	stringstream ss;
+	ss << "Yahoo|" << this->ID << "|" << this->Pass << endl;
+	return ss.str();
+}
+
+bool Yahoo::KiemTraMail(string id, string pass)
+{
+	return false;
 }

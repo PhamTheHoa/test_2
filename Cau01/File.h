@@ -40,6 +40,16 @@ public:
 };
 
 
+class Yahoo :public Mail {
+protected:
+	string api = "Yahoo.txt";
+public:
+	Yahoo();
+	Yahoo(string id, string pass);
+	virtual string toStringMail();
+	virtual bool KiemTraMail(string id, string pass);
+};
+
 //
 class CreatMail {
 public:
@@ -56,6 +66,7 @@ public:
 	string toStringFileName();
 	list<string>DanhSachMail();
 	void LuuUser();
+	void TaiUser();
 	virtual~AppUser();
 	void AddMail();
 };
