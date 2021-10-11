@@ -6,6 +6,6 @@ int main() {
 	cin >> name;
 	User = new AppUser(name);
 	User->AddMail();
-
+	//ddd
 
 }
