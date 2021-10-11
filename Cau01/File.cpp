@@ -167,15 +167,9 @@ list<string> AppUser::DanhSachMail()
 	return DanhSachMail;
 }
 
-void AppUser::LuuUser()
-{
-	string FileName = this->toStringFileName();
-	Files::WriteFile(FileName, this->DanhSachMail());
-
-}
 
 
-//tesssrrrrrrrrr
+
 void AppUser::TaiUser()
 {
 	
