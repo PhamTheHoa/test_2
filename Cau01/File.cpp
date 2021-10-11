@@ -176,26 +176,7 @@ void AppUser::LuuUser()
 
 void AppUser::TaiUser()
 {
-	cout << "nhap user name:";
-	cin >> this->UserName;
-	string FileName = this->toStringFileName();
-	list<string>feature;
-	list<string>DanhSachMail=Files::ReadFile(FileName);
-	for (list<string>::iterator i = DanhSachMail.begin();i != DanhSachMail.end();++i) {
-		feature = Files::split(*i, '|');
-		list<string>::iterator i0 = next(feature.begin(), 0);
-		list<string>::iterator i1 = next(feature.begin(), 1);
-		list<string>::iterator i2 = next(feature.begin(), 2);
-		Mail* mail;
-		mail = CreatMail::TaoMail(*i0);
-		if (mail->KiemTraMail(*i1, *i2) == true) {
-			mail->ganIDVaPass(*i1, *i2);
-			this->DanhSach.push_back(mail);
-		}
-		else {
-			cout << "ACCOUNT NOT EXIST !!!" << endl;
-		}
-	}
+	
 }
 
 AppUser::~AppUser()
