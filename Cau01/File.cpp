@@ -233,7 +233,7 @@ Mail* CreatMail::TaoMail(string MailName)
 	if (MailName == "Yahoo") {
 		mail = new Yahoo();
 	}
-	return mail;
+	return mail;//
 }
 
 Yahoo::Yahoo()
