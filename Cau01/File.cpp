@@ -196,6 +196,8 @@ void AppUser::TaiUser()
 			cout << "ACCOUNT NOT EXIST !!!" << endl;
 		}
 	}
+
+
 }
 
 AppUser::~AppUser()
